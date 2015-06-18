@@ -61,6 +61,13 @@ then
   ROUNDCUBE_RELATIVE_URL_ROOT="/"
 fi
 
+#Roundcube Webmail
+if [ -z ${ROUNDCUBE_NAME+x} ]
+then
+  ROUNDCUBE_NAME=Roundcube Webmail
+fi
+
+
 ROUNDCUBE_RANDOM=`perl -e 'my @chars = ("A".."Z", "a".."z"); my $string; $string .= $chars[rand @chars] for 1..24; print $string;'` # returns exactly 24 random chars
 
 ###
@@ -79,6 +86,7 @@ sed -i "s/SMTP_PROTOCOL/$ROUNDCUBE_SMTP_PROTO/g" /roundcube/config/config.inc.ph
 sed -i "s/SMTP_PORT/$ROUNDCUBE_SMTP_PORT/g" /roundcube/config/config.inc.php
 sed -i "s/LOCALISATION/$ROUNDCUBE_LANGUAGE/g" /roundcube/config/config.inc.php
 sed -i "s/ROUNDCUBE_RANDOM/$ROUNDCUBE_RANDOM/g" /roundcube/config/config.inc.php
+sed -i "s/Roundcube Webmail/$ROUNDCUBE_NAME/g" /roundcube/config/config.inc.php
 
 echo ">> set Timezone -> $ROUNDCUBE_PHP_DATE_TIMEZONE"
 sed -i "s!;date.timezone =.*!date.timezone = $ROUNDCUBE_PHP_DATE_TIMEZONE!g" /etc/php5/fpm/php.ini

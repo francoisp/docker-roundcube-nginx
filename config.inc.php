@@ -14,4 +14,6 @@ $config['mail_pagesize'] = 250;
 $config['addressbook_pagesize'] = 250;
 $config['htmleditor'] = 2;
 $config['preview_pane'] = true;
+$config['product_name'] = 'Roundcube Webmail';
+$config['useragent'] = 'Roundcube Webmail/'.RCMAIL_VERSION;
 ?>
