@@ -1,4 +1,5 @@
-based on marvambass ssl secure,ngnix and roundcube dockerfiles
+based on docker files and scripts by https://github.com/MarvAmBass
+ssl secure,ngnix and roundcube dockerfiles
 
 This dockerfile fetches the latest roundcube. It needs a postgres container to store the user data.
  
