@@ -4,6 +4,9 @@
 # Variables
 ###
 
+echo ">> remove startup-roundcube.sh script"
+sed -i "s/\/opt\/startup-roundcube.sh/# removed /g" /opt/entrypoint.sh
+
 if [ -z ${POSTGRES_USER+x} ] || [ -z ${PGPASSWORD+x} ]
 then
   >&2 echo ">> no user or password for database specified!"
@@ -166,4 +169,6 @@ chown www-data:www-data -R /roundcube
 echo ">> killing nginx - done with configuration"
 sleep 1
 killall nginx
+
+
 echo ">> finished initialization"

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+/etc/init.d/php5-fpm start
+chmod a+rwx /var/run/php5-fpm.sock
+
 cat <<EOF
 Derived from marvambass/nginx-ssl-secure and marvambass/roundcube containers
 
@@ -50,6 +53,9 @@ echo ">> copy /etc/nginx/external/*.conf files to /etc/nginx/conf.d/"
 cp /etc/nginx/external/*.conf /etc/nginx/conf.d/ 2> /dev/null > /dev/null
 
 # exec CMD
+
+/opt/startup-roundcube.sh
 echo ">> exec docker CMD"
 echo "$@"
 exec "$@"
+#exec nginx
